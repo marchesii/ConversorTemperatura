@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,26 +8,44 @@
     tools:context=".MainActivity">
 
     <EditText
-        android:id="@+id/editText_inputfarenheit"
+        android:id="@+id/editText_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:backgroundTint="#00BCD4"
-        android:hint="Temperatura em Fahrenheit"
+        android:hint="Temperatura"
         android:inputType="number|numberDecimal|numberSigned"
         android:textAlignment="center"
         android:textColor="#1E1BAC" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="40dp"
+        android:layout_marginHorizontal="10dp">
+
+
     <Button
-        android:id="@+id/button_converter"
+        android:id="@+id/button_converterPCelsius"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:layout_gravity="center"
-        android:layout_marginTop="30dp"
-        android:text="Converter para Celsius" />
+        android:layout_marginRight="5dp"
+        android:text="Celsius"/>
 
+    <Button
+        android:id="@+id/button_converterPFarenheit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_gravity="center"
+        android:layout_marginLeft="5dp"
+        android:text="Fahrenheit" />
+    </LinearLayout>
     <TextView
-        android:id="@+id/textView_outputCelsius"
+        android:id="@+id/textView_output"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

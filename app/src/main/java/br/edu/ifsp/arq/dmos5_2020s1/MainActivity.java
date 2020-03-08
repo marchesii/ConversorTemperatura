@@ -12,35 +12,42 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Button converterButton;
-    private EditText inputFarenheitEditText;
-    private TextView outputCelsiusTextView;
+    private Button converterButtonCelsius;
+    private Button converterButtonFarenheit;
+    private EditText inputEditText;
+    private TextView outputTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        converterButton = findViewById(R.id.button_converter);
-        inputFarenheitEditText = findViewById(R.id.editText_inputfarenheit);
-        outputCelsiusTextView = findViewById(R.id.textView_outputCelsius);
-        converterButton.setOnClickListener(this);
+        converterButtonCelsius = findViewById(R.id.button_converterPCelsius);
+        converterButtonFarenheit = findViewById(R.id.button_converterPFarenheit);
+        inputEditText = findViewById(R.id.editText_input);
+        outputTextView = findViewById(R.id.textView_output);
+        converterButtonCelsius.setOnClickListener(this);
+        converterButtonFarenheit.setOnClickListener(this);
     }
 
 
     @Override
     public void onClick(View v) {
-        if (v == converterButton) {
-            converterValor();
+        if (v == converterButtonCelsius) {
+            converterValor(1);
+        } else {
+            if(v == converterButtonFarenheit){
+                converterValor(2);
+            }
         }
     }
 
     @SuppressLint("DefaultLocale")
-    private void converterValor() {
+    private void converterValor(int opcao) {
         double valorConvertido;
         String valorConvertidoString;
 
-        valorConvertidoString = inputFarenheitEditText.getText().toString();
+        valorConvertidoString = inputEditText.getText().toString();
 
         try {
             valorConvertido = Double.parseDouble(valorConvertidoString);
@@ -49,6 +56,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             valorConvertido = 0;
         }
 
-        outputCelsiusTextView.setText(String.format("%.2f ºC", ((valorConvertido - 32) / 1.8)));
+        if(opcao == 1){
+            outputTextView.setText(String.format("%.2f ºC", ((valorConvertido - 32) / 1.8)));
+        } else {
+            if(opcao == 2){
+                outputTextView.setText(String.format("%.2f ºF", ((valorConvertido * 1.8) + 32 )));
+            }
+        }
+
     }
 }
